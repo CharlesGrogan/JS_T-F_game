@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>True/False Question Game!</h1>
+    <h2>Use the "t" key to answer "True"</h2>
+    <h2>Use the "f" key to answer "False"</h2>
+
+    <p id='score'></p>
+    <p id="question"></p>
+
+    <script>
+
+        let questions = [
+            { q: "The sky is blue", a: "t" },
+            { q: "The grass is green", a: "t" },
+            { q: "The pavement is black", a: "t" },
+            { q: "The leaves are beeautiful", a: "t" },
+            { q: "Climate change is real", a: "t" },
+            { q: "Humans suck", a: "f" }
+        ];
+
+        let score = 0;
+        let questionIndex = 0;
+
+        function renderQuestion() {
+            if (questionIndex <= (questions.length - 1)) {
+                document.querySelector('#question').innerHTML = questions[questionIndex].q;
+            }
+            else {
+                document.querySelector("#question").innerHTML = "Game Over";
+                document.querySelector("#score").innerHTML = "Final Score " + score + " out of " + questions.length;
+            }
+        }
+
+        function updateScore() {
+            document.querySelector('#score').innerHTML = `Score: ${score}`;
+        }
+
+        renderQuestion();
+        updateScore();
+
+        document.onkeyup = function (e) {
+            if (questionIndex === question.length) {
+                return;
+            }
+
+            let userInput = e.key.toLocaleLowerCase();
+            if (userInput === "t" || userInput === "f") {
+                if (userInput === questions[questionIndex].a) {
+                    alert("Correct answer");
+                    score++;
+                    updateScore();
+                }
+                else {
+                    alert("Wrong answer!");
+                }
+                questionIndex++;
+                renderQuestion();
+            }
+        };
+
+    </script>
+</body>
+
+</html>
