@@ -52,7 +52,7 @@
                 return;
             }
 
-            let userInput = e.key.toLocaleLowerCase();
+            let userInput = e.key.toLowerCase();
             if (userInput === "t" || userInput === "f") {
                 if (userInput === questions[questionIndex].a) {
                     alert("Correct answer");
